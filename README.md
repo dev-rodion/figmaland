@@ -1,4 +1,9 @@
-# gulp4
+# Figmaland
+
+Figmaland is a landing page. <br />
+Here I used HTML, CSS (Sass), JavaScript, Gulp4 and Git with GitHub. <br />
+
+Demo: https://dev-rodion.github.io/figmaland/ <br><br>
 
 Building Gulp 4 for a convenient and fast site layout. <br />
 To use this build of Gulp 4, you need to have Node.js, npm and gulp installed globally.
