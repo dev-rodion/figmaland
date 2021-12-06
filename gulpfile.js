@@ -36,7 +36,10 @@ function styles() {
 }
 
 function scripts() {
-  return src(["app/js/main.js"]) // finds and selects files
+  return src([ // finds and selects files
+    "app/js/lazyload.js",
+    "app/js/main.js"
+  ])
     .pipe(concat("script.min.js")) // concatenates the js files and sets the filename
     .pipe(uglify()) // uglifies js code
     .pipe(dest("app/js/")) // sends file to app/js directory
@@ -57,7 +60,7 @@ function images() {
 
 function watching() {
   watch(["app/scss/**/*.scss"], styles); // calls the styles function when scss files change in app/scss directory
-  watch(["app/js/main.js"], scripts); // calls the scripts function when main.js file change in app/js directory
+  watch(["app/js/*.js", "!app/js/script.min.js"], scripts); // calls the scripts function when main.js file change in app/js directory
   watch(["app/*.html"]).on("change", browserSync.reload); // refreshes the browser page when HTML files change
 }
 

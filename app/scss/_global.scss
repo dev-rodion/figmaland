@@ -107,6 +107,7 @@ section {
   color: #fff;
   text-transform: capitalize;
   background-color: $primary_color;
+  text-decoration: none !important;
   &_bold {
     font-weight: 700;
   }
@@ -176,7 +177,7 @@ section {
   justify-content: center;
   overflow-y: auto;
   opacity: 0;
-  transform: translateY(100%);
+  transform: translateX(1000%);
   transition: 0.5s;
   transition: opacity 0.5s, transform 0s 0.5s;
   &__inner {
@@ -198,6 +199,7 @@ section {
     opacity: 0;
     transform: scale(0);
     transition: 0.5s;
+    background-color: #fff;
   }
   &__video_iframe {
     position: absolute;
@@ -207,8 +209,14 @@ section {
     height: 100%;
   }
   &_active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateX(0%);
     transition: opacity 0.5s, transform 0s;
     .popup__video {
       opacity: 1;
@@ -327,5 +335,21 @@ section {
   &__period {
     text-align: left;
     text-transform: capitalize;
+  }
+}
+
+// Map
+.map {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  overflow: hidden;
+  background-color: rgba($primary_color, 0.1);
+  &__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
