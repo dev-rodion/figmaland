@@ -100,16 +100,23 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px 60px;
+  padding: 15px 60px;
   border-radius: 35px;
   width: fit-content;
   font-size: 20px;
   color: #fff;
   text-transform: capitalize;
   background-color: $primary_color;
+  border: 2px solid $primary_color;
   text-decoration: none !important;
+  transition: 0.3s;
+  &:hover {
+    color: $primary_color;
+    background-color: #fff;
+  }
   &_bold {
     font-weight: 700;
+    border-width: 3px;
   }
   &_center {
     margin: 0 auto;
@@ -179,7 +186,7 @@ section {
   opacity: 0;
   transform: translateX(1000%);
   transition: 0.5s;
-  transition: opacity 0.5s, transform 0s 0.5s;
+  transition: 0s;
   &__inner {
     max-width: 1200px;
     padding: 0 15px;

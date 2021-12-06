@@ -266,7 +266,12 @@
       width: 100%;
       margin-top: 30px;
       color: $primary_color;
+      border-color: #fff;
       background-color: #fff;
+      &:hover {
+        color: #fff;
+        background-color: $primary_color;
+      }
     }
   }
 }
