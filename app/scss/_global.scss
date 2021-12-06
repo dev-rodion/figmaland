@@ -1,14 +1,17 @@
 *,
 *::after,
 *::before {
-  font-family: sans-serif;
+  box-sizing: border-box;
+  font-family: "Graphik", sans-serif;
   margin: 0;
   padding: 0;
   outline: none;
 }
 
 body {
+  background: #fff;
   color: $color_1;
+  font-family: "Graphik", sans-serif;
 }
 
 .container {
@@ -21,6 +24,9 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 ul {
@@ -41,12 +47,15 @@ button {
   cursor: pointer;
 }
 
+section {
+  padding: 100px 0;
+}
+
 ::placeholder {
   font-size: inherit;
   color: inherit;
   font-family: inherit;
 }
-
 
 .title {
   font-size: 48px;
@@ -70,8 +79,10 @@ button {
 }
 
 .top {
+  max-width: 550px;
   &_center {
     text-align: center;
+    margin: 0 auto;
   }
   &_white {
     color: #fff;
@@ -109,8 +120,49 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  &_row {
+    flex-direction: row;
+    text-align: left;
+  }
+  &__title {
+    line-height: 1.4;
+  }
+  &__text {
+    font-size: 18px;
+    line-height: 1.4;
+  }
 }
 
+// Video Player
+.video_player {
+  &__block {
+    position: relative;
+  }
+  &__btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+    border-radius: 50%;
+    overflow: hidden;
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+      box-shadow: 0px 10px 20px rgba($color_1, 0.4);
+    }
+  }
+  &__btn_img {
+    display: block;
+  }
+  &__img {
+    display: block;
+    border-radius: 45px;
+    box-shadow: 0px 8.14769px 63.1446px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Popup
 .popup {
   position: fixed;
   top: 0;
@@ -127,9 +179,6 @@ button {
   transform: translateY(100%);
   transition: 0.5s;
   transition: opacity 0.5s, transform 0s 0.5s;
-
-  &_active {
-  }
   &__inner {
     max-width: 1200px;
     padding: 0 15px;
@@ -168,29 +217,115 @@ button {
   }
 }
 
+// Form
 .form {
   display: flex;
   flex-direction: column;
-  grid-gap: 45px;
+  text-align: center;
+  padding: 20px 40px;
+  box-shadow: 0px 13px 19px rgba(0, 0, 0, 0.07);
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  &__title {
+    text-align: center;
+    margin: 0 auto;
+  }
   &__input_box {
     display: flex;
     flex-wrap: wrap;
     grid-gap: 12px;
+    margin: 20px 0;
   }
   &__input {
     flex: 1;
-    font-size: 15px; 
+    font-size: 15px;
     padding: 20px 30px;
     border-radius: 40px;
-    background-color: #F5F5F5;
-    border: 1px solid #E8E8E8;
+    background-color: #f5f5f5;
+    border: 1px solid #e8e8e8;
+  }
+  &__textarea {
+    flex: 1;
+    height: 190px;
+    padding: 20px 30px;
+    font-size: 15px;
+    background-color: #f5f5f5;
+    border: 1px solid #e8e8e8;
   }
   &__btn {
-    
+    padding: 15px 40px;
   }
 }
 
 .list {
   list-style-type: disc;
   padding-left: 30px;
+}
+
+// Social
+.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 24px;
+  &__item {
+    display: block;
+  }
+  &__icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// Hidden
+.hidden {
+  height: 0px;
+  overflow: hidden;
+  transition: 1s;
+}
+
+// Client
+.client {
+  display: flex;
+  align-items: center;
+  &__avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 13.5px;
+  }
+  &__avatar_img {
+    display: block;
+  }
+  &__info {
+    line-height: 1.4;
+  }
+  &__name {
+    font-weight: 700;
+  }
+}
+
+// Price
+.price {
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 -5px;
+  }
+  &__col {
+    margin: 0 5px;
+  }
+  &__value {
+    font-size: 74px;
+  }
+  &__currency {
+    font-weight: 700;
+    font-size: 20px;
+    text-align: left;
+  }
+  &__period {
+    text-align: left;
+    text-transform: capitalize;
+  }
 }
