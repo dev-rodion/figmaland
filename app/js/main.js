@@ -1,6 +1,9 @@
 window.onload = function () {
   const body = document.querySelector("body");
   const header = document.querySelector("#header");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu__link");
+  const burger = document.querySelector(".burger");
   const smoothLinks = document.querySelectorAll("a[href^='#']");
   const videoPlayerBtns = document.querySelectorAll(".video_player__btn");
   const forms = document.querySelectorAll("form");
@@ -15,6 +18,22 @@ window.onload = function () {
   for (const link of smoothLinks) {
     handleSmoothLinkClick(link);
   }
+
+  //
+  burger.addEventListener("click", function () {
+    if (menu.classList.contains("menu_active")) {
+      hideMenu();
+    } else {
+      showMenu();
+    }
+  });
+  for (const link of menuLinks) {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      hideMenu();
+    });
+  }
+  //
 
   // Works with the Video Player Buttons and Popups
   for (const btn of videoPlayerBtns) {
@@ -42,16 +61,17 @@ window.onload = function () {
     const btnText = btn.innerHTML;
     const id = btn.getAttribute("data-block-id");
     const hiddenBlock = document.querySelector(id);
-    const contentHeight = hiddenBlock.querySelector("div").clientHeight;
 
     btn.addEventListener("click", () => {
+      const contentHeight = hiddenBlock.querySelector("div").clientHeight;
+
       if (!hiddenBlock.style.height) {
         hiddenBlock.style.height = `${contentHeight}px`;
         btn.innerHTML = "Hide";
       } else {
         hiddenBlock.style.height = "";
         btn.innerHTML = btnText;
-    }
+      }
     });
   }
 
@@ -68,17 +88,32 @@ window.onload = function () {
   handleScroll();
   // ============
 
+  // Handles Menu
+  function showMenu() {
+    menu.classList.add("menu_active");
+    burger.classList.add("burger_active");
+    body.style.overflow = "hidden";
+  }
+  function hideMenu() {
+    menu.classList.remove("menu_active");
+    burger.classList.remove("burger_active");
+    body.style.overflow = "";
+  }
+
   // Handle Smooth Links Click
   function handleSmoothLinkClick(smoothLink) {
     // Handle click
     smoothLink.addEventListener("click", (e) => {
       e.preventDefault();
 
-      const yOffset = 0;
+      let yOffset;
+
+      window.innerWidth <= 768 ? (yOffset = 60) : (yOffset = 0);
+
       const id = smoothLink.getAttribute("href");
       const element = document.querySelector(id);
       const y =
-        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        element.getBoundingClientRect().top + window.pageYOffset - yOffset;
 
       window.scrollTo({ top: y, behavior: "smooth" });
     });
